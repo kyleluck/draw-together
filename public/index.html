@@ -6,7 +6,13 @@
   </head>
   <body>
     <h1>Draw Together</h1>
-    <input type="color" id="color-picker" style="position:absolute">
+    <div id="controls">
+      <label for="color-picker">Color:</label>
+      <input type="color" id="color-picker">
+      <label for="pen-thickness">Thickness:</label>
+      <input type="number" id="pen-thickness" min="1" max="20" step="1">
+    </div>
+
     <canvas width="600" height="600" id="canvas"></canvas>
     <script src="/socket.io/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
