@@ -7,7 +7,8 @@ $(function() {
   var ctx = canvas.getContext('2d');
   var lastMousePosition;
   var color = $('#color-picker').val();
-  var thickness = 1;
+  var thickness = $('#pen-thickness').val();
+  var eraser = false;
 
   $('#color-picker').change(function() {
     color = $('#color-picker').val();
@@ -15,6 +16,15 @@ $(function() {
 
   $('#pen-thickness').change(function() {
     thickness = $('#pen-thickness').val();
+  });
+
+  $('#eraser').change(function() {
+    eraser = $('#eraser').is(':checked') ? true : false;
+    if (eraser) {
+      color = 'white';
+    } else {
+      color = $('#color-picker').val();
+    }
   });
 
   $('#canvas').mousedown(function() {
