@@ -7,11 +7,10 @@ app.use(express.static('public'));
 
 io.on('connection', function(socket) {
 
-  console.log('user connected!');
-
-  //draw msg has x & y properties for where the dot was drawn
+  //draw msg has 2 points with x & y properties for where the line
+  //started (point1) and where the line ends (point2)
   socket.on('draw', function(msg) {
-    socket.broadcast.emit('draw', {x: msg.x, y: msg.y});
+    socket.broadcast.emit('draw', {point1: {x: msg.point1.x, y: msg.point1.y}, point2: {x: msg.point2.x, y: msg.point2.y}});
   });
 
 });
