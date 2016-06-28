@@ -52,7 +52,6 @@ $(function() {
         ctx.lineTo(mousePosition.x, mousePosition.y);
         ctx.closePath();
         ctx.stroke();
-        //socket.emit('draw', {x: mousePosition.x, y: mousePosition.y});
         socket.emit('draw', {point1: {x: lastMousePosition.x, y: lastMousePosition.y},
                              point2: {x: mousePosition.x, y: mousePosition.y},
                              color: color,
