@@ -20,6 +20,7 @@ io.on('connection', function(socket) {
     socket.room = room;
     if (rooms.indexOf(room) === -1) {
       rooms.push(room);
+      io.emit('room', room);
     }
 
     //send all messages of current state to new user
@@ -28,6 +29,10 @@ io.on('connection', function(socket) {
         socket.emit('draw', msg.message);
       }
     });
+  });
+
+  socket.on('leaveRoom', function(room) {
+    socket.leave(room);
   });
 
   //draw msg has 2 points with x & y properties for where the line

@@ -26,6 +26,19 @@ $(function() {
     return false;
   });
 
+  $('#switch-room').change(function() {
+    socket.emit('leaveRoom', roomName); //leave current room
+    roomName = $("#switch-room option:selected").text();
+    socket.emit('room', roomName); //join new room
+
+    //fill canvas with white as new room canvas will be redrawn
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, 600, 600);
+
+    //update room name in title
+    $('#title').text('Draw Together - Room: ' + roomName);
+  });
+
   $('#color-picker').change(function() {
     color = $('#color-picker').val();
   });
@@ -90,12 +103,15 @@ $(function() {
     ctx.stroke();
   });
 
-  //on rooms message, show available rooms
+  //on rooms message, show available rooms. rooms is an array
   socket.on('rooms', function(rooms) {
-    console.log(rooms);
     rooms.forEach(function(room) {
-      $('#available-rooms').append('<option value="' + room + '">' + room + '</option>');
+      $('#available-rooms, #switch-room').append('<option value="' + room + '">' + room + '</option>');
     });
+  });
+
+  socket.on('room', function(room) {
+    $('#available-rooms, #switch-room').append('<option value="' + room + '">' + room + '</option>');
   });
 
 });

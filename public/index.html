@@ -9,7 +9,6 @@
   <body>
     <div class="container">
       <h1 id="title">Draw Together</h1>
-      <!-- <input type="button" value="Leave Room"> -->
       <div id="join-room">
         <form id="join-room-form">
           <label for="available-rooms">Select a room:</label>
@@ -26,6 +25,10 @@
         <input type="number" id="pen-thickness" min="1" max="20" step="1" value="3">
         <label for="eraser">Eraser:</label>
         <input type="checkbox" id="eraser">
+        <label for="switch-room">Switch Room:</label>
+        <select name="switch-room" id="switch-room">
+          <option value="select">Select a Room</option>
+        </select>
       </div>
 
       <canvas width="600" height="600" id="canvas" class="hidden"></canvas>
