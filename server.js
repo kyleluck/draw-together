@@ -31,6 +31,7 @@ io.on('connection', function(socket) {
     });
   });
 
+  //leave the room. happens when a user is switching rooms
   socket.on('leaveRoom', function(room) {
     socket.leave(room);
   });
