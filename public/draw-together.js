@@ -1,14 +1,14 @@
 $(function() {
 
-  //variable for drawing state
-  var isDrawing = false;
+  var isDrawing = false; //variable for drawing state
   var socket = io();
   var canvas = document.getElementById('canvas');
   var ctx = canvas.getContext('2d');
-  var lastMousePosition;
-  var color = $('#color-picker').val();
-  var thickness = $('#pen-thickness').val();
-  var eraser = false;
+  var lastMousePosition; //keep track of the last mouse position
+  var color = $('#color-picker').val(); //color to draw
+  var thickness = $('#pen-thickness').val(); //thickness of pen
+  var eraser = false; //are we using the eraser?
+  var roomName; //what room are we in?
 
   //on initial load, ask user to join or create a room
   //once that form is submitted, hide the associated div and display the canvas
@@ -16,6 +16,9 @@ $(function() {
     $("#controls").removeClass('hidden');
     $("#canvas").removeClass('hidden');
     $('#join-room').hide();
+    roomName = $('#room-name').val();
+    socket.emit('room', roomName);
+    $('#title').append(" - Room: " + roomName);
     return false;
   });
 
