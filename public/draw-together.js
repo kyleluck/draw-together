@@ -33,6 +33,7 @@ $(function() {
 
   $('#canvas').mouseup(function() {
     isDrawing = false;
+    lastMousePosition = null;
   });
 
   $('#canvas').mousemove(function(event) {
