@@ -3,28 +3,34 @@
   <head>
     <meta charset="utf-8">
     <title>Draw Together</title>
+    <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <h1 id="title">Draw Together</h1>
-    <!-- <input type="button" value="Leave Room"> -->
-    <div id="join-room">
-      <form id="join-room-form">
-        <select name="rooms" id="available-rooms"></select>
-        <input type="text" placeholder="...or enter a room name to create it" id="room-name">
-        <input type="submit" value="Join/Create">
-      </form>
-    </div>
-    <div id="controls" class="hidden">
-      <label for="color-picker">Color:</label>
-      <input type="color" id="color-picker">
-      <label for="pen-thickness">Thickness:</label>
-      <input type="number" id="pen-thickness" min="1" max="20" step="1" value="3">
-      <label for="eraser">Eraser:</label>
-      <input type="checkbox" id="eraser">
+    <div class="container">
+      <h1 id="title">Draw Together</h1>
+      <!-- <input type="button" value="Leave Room"> -->
+      <div id="join-room">
+        <form id="join-room-form">
+          <label for="available-rooms">Select a room:</label>
+          <select name="rooms" id="available-rooms"></select>
+          <br>
+          <input type="text" placeholder="...or enter a room name to create it" id="room-name">
+          <input type="submit" value="Join/Create" id="room-submit-button">
+        </form>
+      </div>
+      <div id="controls" class="hidden">
+        <label for="color-picker">Color:</label>
+        <input type="color" id="color-picker">
+        <label for="pen-thickness">Thickness:</label>
+        <input type="number" id="pen-thickness" min="1" max="20" step="1" value="3">
+        <label for="eraser">Eraser:</label>
+        <input type="checkbox" id="eraser">
+      </div>
+
+      <canvas width="600" height="600" id="canvas" class="hidden"></canvas>
     </div>
 
-    <canvas width="600" height="600" id="canvas" class="hidden"></canvas>
     <script src="/socket.io/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script src="draw-together.js"></script>
