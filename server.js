@@ -6,13 +6,21 @@ var io = require('socket.io')(http);
 app.use(express.static('public'));
 
 var drawingState = []; //store messages so drawing can render for users newly joining
+var rooms = []; //rooms currently available
 
 io.on('connection', function(socket) {
+
+  //send available rooms to client on connect so
+  //that they can join or choose to create a new room
+  socket.emit('rooms', rooms);
 
   //join user to their room
   socket.on('room', function(room) {
     socket.join(room);
     socket.room = room;
+    if (rooms.indexOf(room) === -1) {
+      rooms.push(room);
+    }
 
     //send all messages of current state to new user
     drawingState.forEach(function(msg) {

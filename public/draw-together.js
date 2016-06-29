@@ -16,7 +16,11 @@ $(function() {
     $("#controls").removeClass('hidden');
     $("#canvas").removeClass('hidden');
     $('#join-room').hide();
-    roomName = $('#room-name').val();
+    if ($('#room-name').val() === "") {
+      roomName = $("#available-rooms option:selected").text();
+    } else {
+      roomName = $('#room-name').val();
+    }
     socket.emit('room', roomName);
     $('#title').append(" - Room: " + roomName);
     return false;
@@ -84,6 +88,14 @@ $(function() {
     ctx.lineTo(msg.point2.x, msg.point2.y);
     ctx.closePath();
     ctx.stroke();
+  });
+
+  //on rooms message, show available rooms
+  socket.on('rooms', function(rooms) {
+    console.log(rooms);
+    rooms.forEach(function(room) {
+      $('#available-rooms').append('<option value="' + room + '">' + room + '</option>');
+    });
   });
 
 });
