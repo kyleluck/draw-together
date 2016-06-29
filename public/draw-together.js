@@ -10,6 +10,15 @@ $(function() {
   var thickness = $('#pen-thickness').val();
   var eraser = false;
 
+  //on initial load, ask user to join or create a room
+  //once that form is submitted, hide the associated div and display the canvas
+  $("#join-room-form").submit(function() {
+    $("#controls").removeClass('hidden');
+    $("#canvas").removeClass('hidden');
+    $('#join-room').hide();
+    return false;
+  });
+
   $('#color-picker').change(function() {
     color = $('#color-picker').val();
   });

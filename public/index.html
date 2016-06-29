@@ -3,10 +3,17 @@
   <head>
     <meta charset="utf-8">
     <title>Draw Together</title>
+    <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
     <h1>Draw Together</h1>
-    <div id="controls">
+    <div id="join-room">
+      <form id="join-room-form">
+        <input type="text" placeholder="Enter a room name to join or create">
+        <input type="submit" value="Join/Create">
+      </form>
+    </div>
+    <div id="controls" class="hidden">
       <label for="color-picker">Color:</label>
       <input type="color" id="color-picker">
       <label for="pen-thickness">Thickness:</label>
@@ -15,7 +22,7 @@
       <input type="checkbox" id="eraser">
     </div>
 
-    <canvas width="600" height="600" id="canvas" style="border:1px solid black"></canvas>
+    <canvas width="600" height="600" id="canvas" class="hidden"></canvas>
     <script src="/socket.io/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script src="draw-together.js"></script>

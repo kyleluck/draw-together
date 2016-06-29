@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+#join-room input {
+  padding: 10px;
+  width: 50%;
+}
+.hidden {
+  visibility: hidden;
+}
+#canvas {
+  border: 1px solid black;
+}
