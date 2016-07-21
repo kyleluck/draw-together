@@ -3,3 +3,6 @@ A real-time drawing app built with Nodejs, Express and Socket.io. Features inclu
 
 # Screencast
 ![Demo](draw-together.gif)
+
+# Live
+[Check it out here](https://draw-together-lopgjhnayd.now.sh/)
